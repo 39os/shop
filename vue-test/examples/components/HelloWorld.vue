@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <van-swipe class="goods-swipe" :autoplay="3000">
       <van-swipe-item v-for="thumb in goods.thumb" :key="thumb">
         <img :src="thumb" >
@@ -30,7 +31,7 @@
     <van-cell-group class="goods-cell-group">
       <van-cell title="查看商品详情" is-link @click="sorry" />
     </van-cell-group>
-
+    <div>{{goods.cs}}</div>
 <!--    <van-goods-action>-->
 <!--      <van-goods-action-icon icon="chat-o" @click="sorry">-->
 <!--        客服-->
@@ -49,33 +50,7 @@
 </template>
 
 <script>
-  // import {
-  //   Tag,
-  //   Col,
-  //   Icon,
-  //   Cell,
-  //   CellGroup,
-  //   Swipe,
-  //   Toast,
-  //   SwipeItem,
-  //   GoodsAction,
-  //   GoodsActionIcon,
-  //   GoodsActionButton
-  // } from 'vant';
   export default {
-    name:'helloworld',
-    // components: {
-    //   [Tag.name]: Tag,
-    //   [Col.name]: Col,
-    //   [Icon.name]: Icon,
-    //   [Cell.name]: Cell,
-    //   [CellGroup.name]: CellGroup,
-    //   [Swipe.name]: Swipe,
-    //   [SwipeItem.name]: SwipeItem,
-    //   [GoodsAction.name]: GoodsAction,
-    //   [GoodsActionIcon.name]: GoodsActionIcon,
-    //   [GoodsActionButton.name]: GoodsActionButton
-    // },
     data() {
       return {
         goods: {
@@ -86,7 +61,8 @@
           thumb: [
             'https://img.yzcdn.cn/public_files/2017/10/24/e5a5a02309a41f9f5def56684808d9ae.jpeg',
             'https://img.yzcdn.cn/public_files/2017/10/24/1791ba14088f9c2be8c610d0a6cc0f93.jpeg'
-          ]
+          ],
+          cs: this.$store.state.app.breadCrumbList
         }
       };
     },
@@ -98,7 +74,7 @@
         this.$router.push('cart');
       },
       sorry() {
-        // Toast('暂无后续逻辑~');
+         this.$toast('暂无后续逻辑~');
       }
     }
   };
@@ -134,4 +110,5 @@
       margin-left: 5px;
     }
   }
+
 </style>
